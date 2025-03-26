@@ -1,6 +1,7 @@
+import './Canvas.css'
 import { useRef, useState } from "react";
 
-export default function ImageEditor() {
+export default function CanvasComponent() {
     const canvasRef = useRef(null);
     const [text, setText] = useState("Мой текст");
     const [image, setImage] = useState(null);
@@ -64,19 +65,31 @@ export default function ImageEditor() {
 
     return (
         <div style={{ textAlign: "center" }}>
-            <h2>Редактор изображений</h2>
-            <input type="file" accept="image/*" onChange={handleImageUpload} />
+            <input type="file"  accept="image/*" onChange={handleImageUpload} />
+            <br />
+            <canvas ref={canvasRef} style={{
+                width:'600px',
+                height: '500px',
+                border: "2px solid black",
+                marginTop: 10 }} />
             <br />
             <input
                 type="text"
+                class='glow-on-hover'
                 placeholder="Введите текст"
                 value={text}
                 onChange={handleTextChange}
             />
             <br />
-            <canvas ref={canvasRef} style={{ border: "2px solid black", marginTop: 10 }} />
-            <br />
-            <button onClick={saveImage}>Сохранить</button>
+            <button
+                onClick={saveImage}
+                class='glow-on-hover'
+                type="button"
+            >
+                Сохранить
+            <
+            /button>
+
         </div>
     );
 }
